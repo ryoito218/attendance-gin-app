@@ -32,6 +32,7 @@ func main() {
 
 	r.POST("/api/clock-in", attendanceHandler.ClockIn)
 	r.POST("/api/clock-out", attendanceHandler.ClockOut)
+	r.GET("/api/attendance", attendanceHandler.ListAttendance)
 
 	if err := r.Run(":8080"); err != nil {
 		log.Fatal(err)
