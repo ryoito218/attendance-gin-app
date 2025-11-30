@@ -7,6 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/ryoito218/attendance-gin-app/internal/db"
+	"github.com/ryoito218/attendance-gin-app/internal/handler"
 )
 
 func main() {
@@ -23,9 +24,14 @@ func main() {
 
 	r := gin.Default()
 
+	attendanceHandler := handler.NewAttendanceHandler(d)
+
 	r.GET("/health", func(c *gin.Context) {
 		c.String(http.StatusOK, "ok")
 	})
+
+	r.POST("/api/clock-in", attendanceHandler.ClockIn)
+	r.POST("/api/clock-out", attendanceHandler.ClockOut)
 
 	if err := r.Run(":8080"); err != nil {
 		log.Fatal(err)
