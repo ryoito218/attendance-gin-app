@@ -26,6 +26,12 @@ func main() {
 
 	attendanceHandler := handler.NewAttendanceHandler(d)
 
+	r.GET("/", func(c *gin.Context) {
+		c.File("./public/index.html")
+	})
+
+	r.Static("/static", "./public")
+
 	r.GET("/health", func(c *gin.Context) {
 		c.String(http.StatusOK, "ok")
 	})
