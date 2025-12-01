@@ -1,0 +1,20 @@
+# Git
+.git
+.gitignore
+
+# ビルド成果物
+app
+*.exe
+*.out
+*.log
+
+# エディタ・IDE
+.vscode
+.idea
+
+# OSごとのファイル
+.DS_Store
+Thumbs.db
+
+# テストの一時ファイル
+coverage.out
